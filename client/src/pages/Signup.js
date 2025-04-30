@@ -21,7 +21,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("/auth/signup", form);
+      const res = await API.post("/signup", form);
       login(res.data.token);
       navigate("/dashboard");
     } catch (err) {

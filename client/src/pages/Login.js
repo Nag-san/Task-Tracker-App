@@ -17,7 +17,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const res = await API.post('/auth/login', form);
+            const res = await API.post('/login', form);
             login(res.data.token);
             navigate('/dashboard');
         } catch (err) {
