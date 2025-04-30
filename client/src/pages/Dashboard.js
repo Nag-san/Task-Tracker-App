@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import { AuthContext } from '../context/AuthContext.js';
 import { fetchProjects, createProject, deleteProject } from '../services/project.js';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
 const {token, logout} = useContext(AuthContext);
@@ -41,7 +42,7 @@ const handleCreate = async (e) => {
 const handleDelete = async (id) => {
     try{
         await deleteProject(id, token);
-        setProjects([projects.filter(p => p._id !== id)]);
+        setProjects(projects.filter(p => p._id !== id));
     } catch (err) {
         setError('Failed to delete project');
     }
@@ -69,7 +70,7 @@ return(
         <ul>
             {projects.map((project)=> (
                 <li key={project._id}>
-                    {project.title}
+                    <Link to={`/project/${project._id}`}> {project.title} </Link> 
                     <button onClick={() => handleDelete(project._id)}> Delete </button>
     
                 </li>
