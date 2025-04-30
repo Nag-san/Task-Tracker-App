@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import API from "../services/api.js";
+import API from "../../services/api.js";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
 
@@ -21,7 +21,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("/signup", form);
+      const res = await API.post("/auth/signup", form);
       login(res.data.token);
       navigate("/dashboard");
     } catch (err) {

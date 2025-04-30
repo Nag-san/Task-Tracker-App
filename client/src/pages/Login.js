@@ -17,7 +17,7 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const res = await API.post('/login', form);
+            const res = await API.post('/auth/login', form);
             login(res.data.token);
             navigate('/dashboard');
         } catch (err) {
@@ -47,9 +47,9 @@ function Login() {
 
             <button type="Submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="/signup">Signup</a></p>
+        <p>Don't have an account? <a href="/signup"></a></p>
     </div>
-    );
+    )
 }
 
 export default Login;
